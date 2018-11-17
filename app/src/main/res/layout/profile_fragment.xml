@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="32dp"
     android:paddingRight="32dp">
+
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
@@ -75,13 +80,13 @@
             />
 
         <EditText
-            android:id="@+id/emailField"
+            android:id="@+id/emailAcc"
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:inputType="textEmailAddress"
-            android:editable="false"
+            android:enabled="false"
             />
 
         <Button
@@ -94,6 +99,7 @@
             android:textAllCaps="false"/>
 
         <Button
+            android:id="@+id/logout"
             android:layout_marginTop="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,4 +109,7 @@
             android:textAllCaps="false"/>
     </LinearLayout>
 
+
 </RelativeLayout>
+
+</ScrollView>

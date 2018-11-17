@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     TextView text;
-    Button btn_logout;
+
     PreferenceHelper preferenceHelper;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -44,32 +44,5 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar =getSupportActionBar();
         actionBar.setElevation(0);
 
-//        Boolean login = preferenceHelper.getLogin();
-//        sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
-//        String name = sharedPreferences.getString("nama","");
-//        String username = sharedPreferences.getString("username","");
-//        String email = sharedPreferences.getString("email","");
-//        String id = sharedPreferences.getString("id","");
-
-
-//        text = findViewById(R.id.sharedPreference);
-//        text.setText(String.valueOf(login));
-
-//        text.setText(name+"\n");
-//        text.append(username+"\n");
-//        text.append(email+"\n");
-//        text.append(id);
-
-        btn_logout = findViewById(R.id.logout);
-        btn_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
-                preferenceHelper.setLogout();
-                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 }
