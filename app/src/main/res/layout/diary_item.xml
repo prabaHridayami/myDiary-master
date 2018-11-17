@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="190dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <TextView
+            android:id="@+id/list_diary"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/bluePastel"/>
+        <TextView
+            android:id="@+id/list_diary_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="diary title"
+            android:gravity="center"
+            android:textSize="13sp"
+            />
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:background="@color/bluePastel"
+    tools:context=".Splash">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="230dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tell Me"
+            android:textSize="30sp"
+            android:fontFamily="@font/digorydoodles"
+            android:layout_marginLeft="50dp"
+            />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Story"
+            android:textSize="30sp"
+            android:fontFamily="@font/digorydoodles"
+            android:layout_marginLeft="100dp"
+            />
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I will keep it secret! Sssttt"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/jinky"
+            android:layout_marginTop="16dp"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+</RelativeLayout>
