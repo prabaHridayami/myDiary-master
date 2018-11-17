@@ -5,27 +5,19 @@
     android:layout_height="match_parent"
     android:padding="32dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:src="@drawable/ic_launcher_background"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:clickable="true"/>
 
     <TextView
         android:id="@+id/textChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profile_image"
-        android:text="Change photo"
+        android:text="Register"
+        android:textSize="20pt"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:clickable="true"/>
+    />
 
     <LinearLayout
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@id/textChange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
