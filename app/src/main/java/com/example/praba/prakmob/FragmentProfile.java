@@ -79,9 +79,11 @@ public class FragmentProfile extends android.support.v4.app.Fragment {
                         if(response.isSuccessful()){
                             Registrasi registrasi=response.body();
                             if(registrasi.getStatus() == true){
-                                sharedPreferences = getSharedPreferences("user", getActivity().MODE_PRIVATE);
                                 preferenceHelper =new PreferenceHelper(getActivity());
+                                preferenceHelper.setUsername(inputUsername);
+                                preferenceHelper.setNama(inputUsername);
                                 Toast.makeText(getActivity(), "Edit Berhasil", Toast.LENGTH_SHORT).show();
+
                             }else{
                                 Toast.makeText(getActivity(), registrasi.getMessage(), Toast.LENGTH_SHORT).show();
                             }
