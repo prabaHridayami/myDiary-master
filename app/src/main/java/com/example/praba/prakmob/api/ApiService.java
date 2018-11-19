@@ -20,5 +20,9 @@ public interface ApiService {
     Call<Registrasi>registrasi(@Field("name") String name,@Field("username") String username, @Field("email") String email, @Field("password") String password, @Field("passconfirm") String passconfirm);
 
     @GET("user/view/{id_user}")
-    Call<UserLogin>view(@Path("id_user") int id_user);
+    Call<UserLogin>view(@Path("id_user") String id_user);
+
+    @FormUrlEncoded
+    @POST("user/edit")
+    Call<Registrasi>edit(@Field("id_user") String id, @Field("name") String name, @Field("username") String username);
 }
