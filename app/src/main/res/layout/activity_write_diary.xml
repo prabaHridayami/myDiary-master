@@ -1,9 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="25dp"
+    android:orientation="vertical"
     tools:context=".WriteDiary">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:id="@+id/ed_title"
+            android:layout_width="381dp"
+            android:layout_height="wrap_content"
+            android:inputType="textShortMessage"
+            android:hint="Title"
+            android:textSize="23dp"
+            android:fontFamily="monospace"/>
+
+        <EditText
+            android:id="@+id/ed_text"
+            android:layout_width="380dp"
+            android:layout_height="395dp"
+            android:inputType="textMultiLine"
+            android:hint="Note"
+            android:gravity="top"
+            android:textSize="16dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_tambahgambar"
+            android:layout_width="38dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:text="+"
+            android:textColor="#fbfcfc"
+            android:textSize="25sp"
+            android:background="#838484"/>
+
+        <TextView
+            android:id="@+id/tv_edtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="123dp"
+            android:hint="Edited"
+            android:inputType="time" />
+
+        <Button
+            android:id="@+id/btn_opsi"
+            android:layout_width="38dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="125dp"
+            android:text="..."
+            android:textSize="20sp"
+            android:textColor="#fbfcfc"
+            android:background="#838484"/>
+    </LinearLayout>
+
+</LinearLayout>
