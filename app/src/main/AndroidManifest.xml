@@ -25,7 +25,8 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".WriteDiary"></activity>
+        <activity android:name=".WritediaryActivity"
+            android:theme="@style/AppNoBar"></activity>
     </application>
 
 </manifest>
