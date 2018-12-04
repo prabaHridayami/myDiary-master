@@ -1,16 +1,17 @@
-package com.example.praba.prakmob;
+package com.example.praba.prakmob.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.praba.prakmob.model.Diary;
+import com.example.praba.prakmob.Activity.EditDiaryActivity;
+import com.example.praba.prakmob.R;
 import com.example.praba.prakmob.model.DiaryShow;
 
 import java.util.List;
@@ -37,15 +38,33 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         View view;
         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.diary_item, parent, false);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        DiaryShow diary = mData.get(position);
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
+        final DiaryShow diary = mData.get(position);
+        holder.id_diary = diary.getIdDiary();
         holder.tv_title.setText(diary.getTitle());
         holder.tv_diary.setText(diary.getDiary());
-        holder.bind(diary);
+
+        holder.tv_diary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), EditDiaryActivity.class);
+                intent.putExtra("id_diary",holder.id_diary);
+                Toast.makeText(mContext, ""+holder.id_diary+"  Title :"+diary.getTitle(), Toast.LENGTH_SHORT).show();
+
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
 
     }
 
@@ -54,29 +73,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mData.size();
     }
 
+
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        private OnClickListener onClickListener;
         TextView tv_title, tv_diary;
+        String id_diary;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             tv_title = itemView.findViewById(R.id.list_diary_title);
             tv_diary = itemView.findViewById(R.id.list_diary);
-            if (onClickListener!=null){
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onClickListener.onClick(getAdapterPosition());
-                    }
-                });
-            }
         }
 
-        public void bind(DiaryShow diary){
-            tv_title.setText(diary.getTitle());
-            tv_diary.setText(diary.getDiary());
-        }
     }
 
     public void setOnClickListener(OnClickListener onClickListener) {

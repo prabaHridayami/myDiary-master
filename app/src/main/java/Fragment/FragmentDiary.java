@@ -1,6 +1,5 @@
-package com.example.praba.prakmob;
+package Fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.praba.prakmob.R;
+import com.example.praba.prakmob.Adapter.RecyclerViewAdapter;
+import com.example.praba.prakmob.Activity.WritediaryActivity;
 import com.example.praba.prakmob.api.ApiClient;
 import com.example.praba.prakmob.api.ApiService;
 import com.example.praba.prakmob.model.DiaryShow;
@@ -22,7 +24,6 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 public class FragmentDiary extends android.support.v4.app.Fragment{
     ApiService service;

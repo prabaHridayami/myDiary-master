@@ -5,41 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".Activity.WritediaryActivity">
+    tools:context=".Activity.EditDiaryActivity">
 
     <LinearLayout
-        android:id="@+id/line1"
+        android:id="@+id/line21"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/bluePastel"
         android:padding="10dp">
         <Button
-            android:id="@+id/btn_back"
+            android:id="@+id/btn_back1"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="@drawable/ic_arrow_back_black_24dp"/>
         <Button
-            android:id="@+id/btn_save"
+            android:id="@+id/btn_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
             android:textAllCaps="false"
             android:layout_marginLeft="230dp"
             android:textColor="@color/black"
-            android:text="Save"
+            android:text="Edit"
             android:background="@color/bluePastel"/>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/line2"
-        android:layout_below="@id/line1"
+        android:id="@+id/line22"
+        android:layout_below="@id/line21"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal">
         <EditText
-            android:id="@+id/ed_title"
+            android:id="@+id/ed_title1"
             android:layout_width="381dp"
             android:layout_height="wrap_content"
             android:inputType="textShortMessage"
@@ -48,7 +48,7 @@
             android:fontFamily="monospace"/>
 
         <EditText
-            android:id="@+id/ed_text"
+            android:id="@+id/ed_text1"
             android:layout_width="380dp"
             android:layout_height="match_parent"
             android:inputType="textMultiLine"
@@ -58,7 +58,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_gallery"
+        android:id="@+id/btn_gallery1"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
@@ -69,6 +69,5 @@
         android:textSize="20dp"
         android:background="@color/bluePastel"
         />
-
 
 </RelativeLayout>

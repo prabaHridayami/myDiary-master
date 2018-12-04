@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:theme="@style/AppNoBar" />
         <activity
             android:name=".Splash"
@@ -23,9 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".WritediaryActivity"
+        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity
+            android:name=".Activity.WritediaryActivity"
+            android:theme="@style/AppNoBar" />
+        <activity
+            android:name=".Activity.EditDiaryActivity"
             android:theme="@style/AppNoBar"></activity>
     </application>
 

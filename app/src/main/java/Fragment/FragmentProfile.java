@@ -1,6 +1,5 @@
-package com.example.praba.prakmob;
+package Fragment;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,13 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.praba.prakmob.Activity.LoginActivity;
+import com.example.praba.prakmob.Helper.PreferenceHelper;
+import com.example.praba.prakmob.R;
 import com.example.praba.prakmob.api.ApiClient;
 import com.example.praba.prakmob.api.ApiService;
 import com.example.praba.prakmob.model.Registrasi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 public class FragmentProfile extends android.support.v4.app.Fragment {
     SharedPreferences sharedPreferences;

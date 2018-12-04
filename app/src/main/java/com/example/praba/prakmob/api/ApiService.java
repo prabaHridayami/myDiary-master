@@ -38,4 +38,12 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("diary/viewbyuser")
         Call<List<DiaryShow>>viewbyuser(@Field("id_user") String idUser);
+
+    @FormUrlEncoded
+    @POST("diary/viewbyid")
+    Call<DiaryShow>viewbyid(@Field("id_diary") String idDiary);
+
+    @FormUrlEncoded
+    @POST("diary/edit")
+    Call<Diary>editDiary(@Field("id_diary") String idDiary, @Field("title") String title, @Field("diary") String diary );
 }

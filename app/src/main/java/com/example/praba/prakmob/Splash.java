@@ -7,6 +7,10 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.praba.prakmob.Activity.LoginActivity;
+import com.example.praba.prakmob.Activity.MainActivity;
+import com.example.praba.prakmob.Helper.PreferenceHelper;
+
 public class Splash extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     PreferenceHelper preferencesHelper;

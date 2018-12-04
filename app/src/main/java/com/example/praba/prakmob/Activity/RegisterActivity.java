@@ -1,22 +1,21 @@
-package com.example.praba.prakmob;
+package com.example.praba.prakmob.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.praba.prakmob.R;
 import com.example.praba.prakmob.api.ApiClient;
 import com.example.praba.prakmob.api.ApiService;
 import com.example.praba.prakmob.model.Registrasi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
