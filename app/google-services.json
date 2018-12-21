@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "256117746485",
+    "firebase_url": "https://mydiary-1bd74.firebaseio.com",
+    "project_id": "mydiary-1bd74",
+    "storage_bucket": "mydiary-1bd74.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256117746485:android:885e3979ff6354bb",
+        "android_client_info": {
+          "package_name": "com.example.praba.prakmob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256117746485-u5mbljvboe5mn6q04njirmkuhruvr9er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMoMECsPj7M9z1ll1AS0DLli154NWrs3s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
