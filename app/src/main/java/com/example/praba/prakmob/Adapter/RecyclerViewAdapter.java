@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.praba.prakmob.Activity.EditDiaryActivity;
 import com.example.praba.prakmob.R;
 import com.example.praba.prakmob.model.DiaryShow;
@@ -53,9 +56,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final DiaryShow diary = mData.get(position);
         holder.id_diary = diary.getIdDiary();
         holder.tv_title.setText(diary.getTitle());
-        holder.tv_diary.setText(diary.getDiary());
+//        holder.iv_diary.setText(diary.getDiary());
+        Glide.with(mContext)
+                .load(diary.getImage())
+                .into(holder.iv_diary);
+        Log.wtf("getImage",diary.getImage());
 
-        holder.tv_diary.setOnClickListener(new View.OnClickListener() {
+
+        holder.iv_diary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), EditDiaryActivity.class);
@@ -76,13 +84,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_title, tv_diary;
+        TextView tv_title,tv_diary;
+        ImageView iv_diary;
         String id_diary;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             tv_title = itemView.findViewById(R.id.list_diary_title);
-            tv_diary = itemView.findViewById(R.id.list_diary);
+            iv_diary = itemView.findViewById(R.id.list_diary);
+
         }
 
     }

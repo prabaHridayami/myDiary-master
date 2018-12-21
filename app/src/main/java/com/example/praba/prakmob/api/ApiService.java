@@ -8,11 +8,15 @@ import com.example.praba.prakmob.model.UserLogin;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface ApiService {
@@ -32,18 +36,30 @@ public interface ApiService {
     Call<Registrasi>edit(@Field("id_user") String id, @Field("name") String name, @Field("username") String username);
 
     @FormUrlEncoded
-    @POST("diary/add")
-    Call<Diary>add(@Field("title") String title, @Field("diary") String diary, @Field("id_user") String id_user);
+    @POST("diary/addmob")
+    Call<Diary>addMOb(@Field("title") String title, @Field("diary") String diary, @Field("id_user") String id_user);
 
     @FormUrlEncoded
     @POST("diary/viewbyuser")
-        Call<List<DiaryShow>>viewbyuser(@Field("id_user") String idUser);
+    Call<List<DiaryShow>>viewbyuser(@Field("id_user") String idUser);
 
     @FormUrlEncoded
     @POST("diary/viewbyid")
     Call<DiaryShow>viewbyid(@Field("id_diary") String idDiary);
 
-    @FormUrlEncoded
-    @POST("diary/edit")
-    Call<Diary>editDiary(@Field("id_diary") String idDiary, @Field("title") String title, @Field("diary") String diary );
+//    @FormUrlEncoded
+//    @POST("diary/edit")
+//    Call<Diary>editDiary(@Field("id_diary") String idDiary, @Field("title") String title, @Field("diary") String diary );
+
+    @Multipart
+    @POST("diary/addmob")
+    Call<Diary>add(@Part MultipartBody.Part image, @Part("title") RequestBody title,
+                       @Part("diary") RequestBody diary,
+                       @Part("id_user") RequestBody id_user);
+
+    @Multipart
+    @POST("diary/editmob")
+    Call<Diary>edit(@Part MultipartBody.Part image, @Part("title") RequestBody title,
+                   @Part("diary") RequestBody diary,
+                   @Part("id_diary") RequestBody id_diary);
 }

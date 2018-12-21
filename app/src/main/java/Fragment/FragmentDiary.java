@@ -1,5 +1,6 @@
 package Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.example.praba.prakmob.model.DiaryShow;
 import java.util.ArrayList;
 import java.util.List;
 
+import Database.DbHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -31,7 +33,7 @@ public class FragmentDiary extends android.support.v4.app.Fragment{
     View v;
     Button addDiary;
     DiaryShow diaryShow;
-    List<DiaryShow> diarys;
+    List<DiaryShow> diaryList1 = new ArrayList<>();
     List<DiaryShow> diaryList = new ArrayList<>();
     RecyclerView recyclerView;
     RecyclerViewAdapter recyclerViewAdapter;
@@ -53,33 +55,59 @@ public class FragmentDiary extends android.support.v4.app.Fragment{
             }
         });
 
-        getDiary();
+
 
         return v;
     }
 
-        public void getDiary(){
-            service.viewbyuser("8").enqueue(new Callback<List<DiaryShow>>() {
-                @Override
-                public void onResponse(Call<List<DiaryShow>> call, retrofit2.Response<List<DiaryShow>> response) {
-                    Toast.makeText(getContext(), "Sukses", Toast.LENGTH_SHORT).show();
-                    diaryList.addAll(response.body());
-                    setGridLayout();
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getDiary();
+    }
+
+    public void getDiary(){
+        sharedPreferences = this.getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
+        final String id_user = sharedPreferences.getString("id","");
+        service.viewbyuser(id_user).enqueue(new Callback<List<DiaryShow>>() {
+            @Override
+            public void onResponse(Call<List<DiaryShow>> call, retrofit2.Response<List<DiaryShow>> response) {
+                Toast.makeText(getContext(), "Sukses", Toast.LENGTH_SHORT).show();
+                DbHelper dbHelper = new DbHelper(getActivity());
+                dbHelper.deleteAllDiary(id_user);
+                diaryList1 = response.body();
+                for (DiaryShow diaryShow:diaryList1){
+                    dbHelper.insertDiary(Integer.parseInt(diaryShow.getIdDiary()),diaryShow.getTitle(), diaryShow.getDiary(), diaryShow.getImage(),id_user);
                 }
 
-                @Override
-                public void onFailure(Call<List<DiaryShow>> call, Throwable t) {
+                diaryList.clear();
+                diaryList.addAll(response.body());
+                setGridLayout();
+            }
 
-                }
-            });
-        }
+            @Override
+            public void onFailure(Call<List<DiaryShow>> call, Throwable t) {
+                callContactLocal();
 
-        public void setGridLayout(){
-            recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),diaryList);
-            GridLayoutManager mGridLayoutManager = new GridLayoutManager(getContext(), 2);
-            recyclerView.setAdapter(recyclerViewAdapter);
-            recyclerView.setLayoutManager(mGridLayoutManager);
-        }
+            }
+        });
+    }
+
+    public void setGridLayout(){
+        recyclerViewAdapter = new RecyclerViewAdapter(getActivity(),diaryList);
+        GridLayoutManager mGridLayoutManager = new GridLayoutManager(getContext(), 2);
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setLayoutManager(mGridLayoutManager);
+    }
+
+    private void callContactLocal(){
+        String id_user = sharedPreferences.getString("id","");
+        DbHelper dbHelper = new DbHelper(getActivity());
+        diaryList = dbHelper.selectDiary(id_user);
+        setGridLayout();
+    }
+
 
 }
 

@@ -16,6 +16,16 @@ public class DiaryList{
 
 	private String id;
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	private String image;
+
 	public void setDiary(String diary){
 		this.diary = diary;
 	}
@@ -40,14 +50,16 @@ public class DiaryList{
 		return title;
 	}
 
+
 	@Override
  	public String toString(){
 		return 
 			"DiaryList{" + 
 			"diary = '" + diary + '\'' + 
 			",id_diary = '" + idDiary + '\'' + 
-			",title = '" + title + '\'' + 
-			"}";
+			",title = '" + title + '\'' +
+			",image = '" + image + '\'' +
+					"}";
 		}
 
 	public String getId() {
@@ -58,9 +70,10 @@ public class DiaryList{
 		this.id = id;
 	}
 
-	public DiaryList(String diary, String idDiary, String title) {
+	public DiaryList(String diary, String idDiary, String title, String image) {
 		this.diary = diary;
 		this.idDiary = idDiary;
 		this.title = title;
+		this.image = image;
 	}
 }

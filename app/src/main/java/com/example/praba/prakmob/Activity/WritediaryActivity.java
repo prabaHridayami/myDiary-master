@@ -26,11 +26,13 @@ import com.example.praba.prakmob.R;
 import com.example.praba.prakmob.api.ApiClient;
 import com.example.praba.prakmob.api.ApiService;
 import com.example.praba.prakmob.model.Diary;
+import com.example.praba.prakmob.model.Response;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import Database.DbHelper;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -64,27 +66,25 @@ public class WritediaryActivity extends AppCompatActivity {
         btn_save = findViewById(R.id.btn_save);
         btn_back = findViewById(R.id.btn_back);
         sharedPreferences = this.getSharedPreferences("user", Context.MODE_PRIVATE);
-        final String id = sharedPreferences.getString("id","");
+        final String id_user = sharedPreferences.getString("id","");
+        inputTitle = etTitle.getText().toString();
+        inputDiary = etDiary.getText().toString();
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                inputTitle = etTitle.getText().toString();
-                inputDiary = etDiary.getText().toString();
-
-                service.add(inputTitle,inputDiary,id).enqueue(new Callback<Diary>() {
+                RequestBody title = RequestBody.create(okhttp3.MultipartBody.FORM, etTitle.getText().toString());
+                RequestBody diary = RequestBody.create(okhttp3.MultipartBody.FORM, etDiary.getText().toString());
+                RequestBody id_user = RequestBody.create(okhttp3.MultipartBody.FORM, sharedPreferences.getString("id",""));
+//        RequestBody lng = RequestBody.create(okhttp3.MultipartBody.FORM, mLongitude.getText().toString());
+                service.add(body,title,diary,id_user).enqueue(new Callback<Diary>() {
                     @Override
                     public void onResponse(Call<Diary> call, retrofit2.Response<Diary> response) {
-                        if(response.isSuccessful()){
-                            Diary diary =response.body();
-                            if(diary.getStatus() == true){
-                                Toast.makeText(WritediaryActivity.this, "Add Diary Berhasil", Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(WritediaryActivity.this,MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }else{
-                                Toast.makeText(WritediaryActivity.this, diary.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
+                        Diary diary = response.body();
+                        if (response.isSuccessful()){
+                            Toast.makeText(WritediaryActivity.this, "Add Diary Success", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(WritediaryActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -93,7 +93,6 @@ public class WritediaryActivity extends AppCompatActivity {
                         Toast.makeText(WritediaryActivity.this, "Error :"+t, Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
         });
 
@@ -189,7 +188,7 @@ public class WritediaryActivity extends AppCompatActivity {
 
             RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
 
-            body = MultipartBody.Part.createFormData("picture", file.getName(), reqFile);
+            body = MultipartBody.Part.createFormData("image", file.getName(), reqFile);
 //            uploadImage();
         }
     }
@@ -218,5 +217,45 @@ public class WritediaryActivity extends AppCompatActivity {
         }
     }
 
+    private void upload() {
+        RequestBody title = RequestBody.create(okhttp3.MultipartBody.FORM, etTitle.getText().toString());
+        RequestBody diary = RequestBody.create(okhttp3.MultipartBody.FORM, etDiary.getText().toString());
+        RequestBody id_user = RequestBody.create(okhttp3.MultipartBody.FORM, sharedPreferences.getString("id",""));
+//        RequestBody lng = RequestBody.create(okhttp3.MultipartBody.FORM, mLongitude.getText().toString());
+        service.add(body,title, diary, id_user).enqueue(new Callback<Diary>() {
+            @Override
+            public void onResponse(Call<Diary> call, retrofit2.Response<Diary> response) {
+                Diary diary =response.body();
+                if (response.isSuccessful()){
+                    Toast.makeText(WritediaryActivity.this, "Add Diary Success", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(WritediaryActivity.this, diary.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Diary> call, Throwable t) {
+                Toast.makeText(WritediaryActivity.this, "Error :"+t, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void addDiaryLocal(){
+        int id = 1;
+        String title=etTitle.getText().toString();
+        String diary=etDiary.getText().toString();
+        String id_user = sharedPreferences.getString("id","");
+        String image = body.toString();
+
+        DbHelper dbHelper = new DbHelper(this);
+        long insertLastId = dbHelper.insertDiary(id,title, diary, image, id_user );
+
+        if(insertLastId > 0){
+            Toast.makeText(this, "Insert berhasil dengan id :"+insertLastId, Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Insert Gagal", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 }

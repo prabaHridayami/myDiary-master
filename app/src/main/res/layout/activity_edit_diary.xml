@@ -1,73 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
+    android:layout_margin="0dp"
     android:orientation="vertical"
     tools:context=".Activity.EditDiaryActivity">
 
-    <LinearLayout
-        android:id="@+id/line21"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/bluePastel"
-        android:padding="10dp">
-        <Button
-            android:id="@+id/btn_back1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:background="@drawable/ic_arrow_back_black_24dp"/>
-        <Button
-            android:id="@+id/btn_edit"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/line21"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/bluePastel"
+            android:padding="10dp">
+            <Button
+                android:id="@+id/btn_back1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_arrow_back_black_24dp"/>
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textAllCaps="false"
+                android:layout_marginLeft="230dp"
+                android:textColor="@color/black"
+                android:text="Edit"
+                android:background="@color/bluePastel"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line22"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:textAllCaps="false"
-            android:layout_marginLeft="230dp"
-            android:textColor="@color/black"
-            android:text="Edit"
-            android:background="@color/bluePastel"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/line22"
-        android:layout_below="@id/line21"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal">
-        <EditText
-            android:id="@+id/ed_title1"
-            android:layout_width="381dp"
-            android:layout_height="wrap_content"
-            android:inputType="textShortMessage"
-            android:hint="Title"
-            android:textSize="23dp"
-            android:fontFamily="monospace"/>
-
-        <EditText
-            android:id="@+id/ed_text1"
-            android:layout_width="380dp"
             android:layout_height="match_parent"
-            android:inputType="textMultiLine"
-            android:hint="Note"
-            android:gravity="top"
-            android:textSize="16dp"/>
-    </LinearLayout>
+            android:layout_below="@id/line21"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="0dp"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_gallery1"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:drawableStart="@drawable/ic_collections_black_24dp"
-        android:textAllCaps="false"
-        android:text="Add Galery"
-        android:textSize="20dp"
-        android:background="@color/bluePastel"
-        />
+            <ImageView
+                android:id="@+id/iv_pic"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center" />
 
-</RelativeLayout>
+            <EditText
+                android:id="@+id/ed_title1"
+                android:layout_width="381dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:hint="Title"
+                android:inputType="textShortMessage"
+                android:textSize="23dp" />
+
+            <EditText
+                android:id="@+id/ed_text1"
+                android:layout_width="380dp"
+                android:layout_height="265dp"
+                android:gravity="top"
+                android:hint="Note"
+                android:inputType="textMultiLine"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bluePastel"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_gallery1"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:drawableStart="@drawable/ic_collections_black_24dp"
+                android:textAllCaps="false"
+                android:text="Add Galery"
+                android:textSize="20dp"
+                android:background="@color/bluePastel"
+                />
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:drawableStart="@drawable/ic_collections_black_24dp"
+                android:textAllCaps="false"
+                android:text="Delete Diary"
+                android:textSize="20dp"
+                android:background="@color/bluePastel"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
