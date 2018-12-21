@@ -50,7 +50,7 @@ public class EditDiaryActivity extends AppCompatActivity {
     EditText etTitle, etDiary;
     ImageView iv_pic;
     Button btn_edit, btn_gallery1, btn_back1, btn_delete;
-    String inputTitle, inputDiary, id_diary;
+    String inputTitle, inputDiary, id_diary, image;
     private Bitmap bitmap;
     private Context mContext;
     MultipartBody.Part body;
@@ -219,9 +219,7 @@ public class EditDiaryActivity extends AppCompatActivity {
             Uri selectedImage=data.getData();
             try {
                 bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),selectedImage);
-                iv_pic = findViewById(R.id.iv_pic);
                 iv_pic.setImageBitmap(bitmap);
-                Toast.makeText(EditDiaryActivity.this, "Gambar dirubah", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
