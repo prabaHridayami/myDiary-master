@@ -74,7 +74,7 @@ public class FragmentDiary extends android.support.v4.app.Fragment{
         service.viewbyuser(id_user).enqueue(new Callback<List<DiaryShow>>() {
             @Override
             public void onResponse(Call<List<DiaryShow>> call, retrofit2.Response<List<DiaryShow>> response) {
-                Toast.makeText(getContext(), "Sukses", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Sukses", Toast.LENGTH_SHORT).show();
                 DbHelper dbHelper = new DbHelper(getActivity());
                 dbHelper.deleteAllDiary(id_user);
                 diaryList1 = response.body();

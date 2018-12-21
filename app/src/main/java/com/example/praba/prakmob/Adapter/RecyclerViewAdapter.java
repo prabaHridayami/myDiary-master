@@ -69,7 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), EditDiaryActivity.class);
                 intent.putExtra("id_diary",holder.id_diary);
-                Toast.makeText(mContext, ""+holder.id_diary+"  Title :"+diary.getTitle(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext, ""+holder.id_diary+"  Title :"+diary.getTitle(), Toast.LENGTH_SHORT).show();
 
                 holder.itemView.getContext().startActivity(intent);
                 ((MainActivity)mContext).finish();

@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -70,6 +71,7 @@ public class EditDiaryActivity extends AppCompatActivity {
         btn_edit = findViewById(R.id.btn_edit);
         btn_back1 = findViewById(R.id.btn_back1);
         iv_pic = findViewById(R.id.iv_pic);
+
         sharedPreferences = this.getSharedPreferences("user", Context.MODE_PRIVATE);
         final String id = sharedPreferences.getString("id","");
         Intent intent = getIntent();
@@ -89,30 +91,56 @@ public class EditDiaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Bundle extra = getIntent().getExtras();
-                RequestBody title = RequestBody.create(okhttp3.MultipartBody.FORM, etTitle.getText().toString());
-                RequestBody diary = RequestBody.create(okhttp3.MultipartBody.FORM, etDiary.getText().toString());
-                RequestBody id_diary = RequestBody.create(okhttp3.MultipartBody.FORM, extra.getString("id_diary"));
+                if(body == null){
+                    inputTitle = etTitle.getText().toString();
+                    inputDiary = etDiary.getText().toString();
+                    service.edit1(idDiary,inputTitle,inputDiary,image).enqueue(new Callback<Diary>() {
+                        @Override
+                        public void onResponse(Call<Diary> call, Response<Diary> response) {
+                            Diary diary = response.body();
+                            if (response.isSuccessful()){
+                                Toast.makeText(EditDiaryActivity.this, "Edit Diary Success", Toast.LENGTH_LONG).show();
 
-                service.edit(body,title,diary,id_diary).enqueue(new Callback<Diary>() {
-                    @Override
-                    public void onResponse(Call<Diary> call, retrofit2.Response<Diary> response) {
-                        Diary diary = response.body();
-                        if (response.isSuccessful()){
-                            Toast.makeText(EditDiaryActivity.this, "Edit Diary Success", Toast.LENGTH_LONG).show();
-
-                            Intent intent=new Intent(EditDiaryActivity.this,MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else{
-                            Toast.makeText(EditDiaryActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(EditDiaryActivity.this,MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }else{
+                                Toast.makeText(EditDiaryActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<Diary> call, Throwable t) {
-                        Toast.makeText(EditDiaryActivity.this, "Error :"+t, Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Diary> call, Throwable t) {
+                            Toast.makeText(EditDiaryActivity.this, "Error :"+t, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else{
+                    RequestBody title = RequestBody.create(okhttp3.MultipartBody.FORM, etTitle.getText().toString());
+                    RequestBody diary = RequestBody.create(okhttp3.MultipartBody.FORM, etDiary.getText().toString());
+                    RequestBody id_diary = RequestBody.create(okhttp3.MultipartBody.FORM, extra.getString("id_diary"));
+
+                    service.edit(body,title,diary,id_diary).enqueue(new Callback<Diary>() {
+                        @Override
+                        public void onResponse(Call<Diary> call, retrofit2.Response<Diary> response) {
+                            Diary diary = response.body();
+                            if (response.isSuccessful()){
+                                Toast.makeText(EditDiaryActivity.this, "Edit Diary Success", Toast.LENGTH_LONG).show();
+
+                                Intent intent=new Intent(EditDiaryActivity.this,MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }else{
+                                Toast.makeText(EditDiaryActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Diary> call, Throwable t) {
+                            Toast.makeText(EditDiaryActivity.this, "Error :"+t, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
             }
         });
 
@@ -156,6 +184,8 @@ public class EditDiaryActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     public void getDiaryData() {
@@ -169,6 +199,7 @@ public class EditDiaryActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     etTitle.setText(diaryShow.getTitle());
                     etDiary.setText(diaryShow.getDiary());
+                    image = diaryShow.getImage();
                     Glide.with(EditDiaryActivity.this)
                             .load(diaryShow.getImage())
                             .into(iv_pic);

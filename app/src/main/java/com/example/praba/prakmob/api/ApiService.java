@@ -51,6 +51,10 @@ public interface ApiService {
     @POST("diary/delete")
     Call<Diary>delete(@Field("id_diary") String idDiary);
 
+    @FormUrlEncoded
+    @POST("diary/edit1")
+    Call<Diary>edit1(@Field("id_diary") String idDiary, @Field("title") String title, @Field("diary") String diary, @Field("image") String image );
+
 //    @FormUrlEncoded
 //    @POST("diary/edit")
 //    Call<Diary>editDiary(@Field("id_diary") String idDiary, @Field("title") String title, @Field("diary") String diary );
