@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.example.praba.prakmob.Activity.MainActivity;
 import com.example.praba.prakmob.R;
+import com.example.praba.prakmob.Splash;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -30,7 +31,7 @@ public class MessagingServices extends FirebaseMessagingService {
     }
 
     private void generateNotification(String body,String title) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Splash.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_ONE_SHOT);

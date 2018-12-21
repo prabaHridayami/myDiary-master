@@ -183,9 +183,16 @@ public class EditDiaryActivity extends AppCompatActivity {
                 });
             }
         });
+    }
 
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(EditDiaryActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+        // Don't add finish here.
+        //This is necessary because you finished your last activity with finish();
     }
 
     public void getDiaryData() {

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_person_black_24dp2);
 
         ActionBar actionBar =getSupportActionBar();
-        actionBar.setElevation(0);
+        actionBar.setElevation(15);
 
     }
 }

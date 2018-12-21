@@ -15,6 +15,7 @@
     <color name="gray">#5e5e5e</color>
     <color name="pink">#FE77AF</color>
     <color name="pinkdark">#F24795</color>
+    <color name="pinkdarken">#ce3178</color>
     <color name="pinkpastel">#00fddff6</color>
 
 </resources>

@@ -125,6 +125,16 @@ public class WritediaryActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(WritediaryActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+        // Don't add finish here.
+        //This is necessary because you finished your last activity with finish();
+    }
+
     public static final int MY_PERMISSIONS_REQUEST_STORAGE= 1;
     private boolean checkStoragePermission() {
         if (ContextCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE)
