@@ -15,12 +15,14 @@
             android:id="@+id/list_diary"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:background="@color/bluePastel"/>
+            android:background="@color/whitetrans"/>
         <TextView
             android:id="@+id/list_diary_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/whitetrans"
             android:text="diary title"
+            android:textColor="@color/pinkdark"
             android:gravity="center"
             android:textSize="13sp"
             />

@@ -47,6 +47,10 @@ public interface ApiService {
     @POST("diary/viewbyid")
     Call<DiaryShow>viewbyid(@Field("id_diary") String idDiary);
 
+    @FormUrlEncoded
+    @POST("diary/delete")
+    Call<Diary>delete(@Field("id_diary") String idDiary);
+
 //    @FormUrlEncoded
 //    @POST("diary/edit")
 //    Call<Diary>editDiary(@Field("id_diary") String idDiary, @Field("title") String title, @Field("diary") String diary );
@@ -62,4 +66,6 @@ public interface ApiService {
     Call<Diary>edit(@Part MultipartBody.Part image, @Part("title") RequestBody title,
                    @Part("diary") RequestBody diary,
                    @Part("id_diary") RequestBody id_diary);
+
+
 }

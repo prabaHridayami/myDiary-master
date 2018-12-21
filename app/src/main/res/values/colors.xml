@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="background_color">#009688</color>
     <color name="white">#FFFFFF</color>
+    <color name="whitetrans">#00ffffff</color>
     <color name="black">#000000</color>
     <color name="white_greyish">#EEEEEE</color>
     <color name="button_selectorcolor">#9E9E9E</color>
@@ -12,5 +13,8 @@
     <color name="bluePastel">#c7eff0</color>
     <color name="darkbluePastel">#303F9F</color>
     <color name="gray">#5e5e5e</color>
+    <color name="pink">#FE77AF</color>
+    <color name="pinkdark">#F24795</color>
+    <color name="pinkpastel">#00fddff6</color>
 
 </resources>

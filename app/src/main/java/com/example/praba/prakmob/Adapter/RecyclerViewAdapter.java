@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.praba.prakmob.Activity.EditDiaryActivity;
+import com.example.praba.prakmob.Activity.MainActivity;
 import com.example.praba.prakmob.R;
 import com.example.praba.prakmob.model.DiaryShow;
 
@@ -71,6 +72,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Toast.makeText(mContext, ""+holder.id_diary+"  Title :"+diary.getTitle(), Toast.LENGTH_SHORT).show();
 
                 holder.itemView.getContext().startActivity(intent);
+                ((MainActivity)mContext).finish();
             }
         });
 
@@ -92,7 +94,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(itemView);
             tv_title = itemView.findViewById(R.id.list_diary_title);
             iv_diary = itemView.findViewById(R.id.list_diary);
-
         }
 
     }

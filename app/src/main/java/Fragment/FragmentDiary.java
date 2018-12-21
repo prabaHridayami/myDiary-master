@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,7 +32,7 @@ public class FragmentDiary extends android.support.v4.app.Fragment{
     ApiService service;
     SharedPreferences sharedPreferences;
     View v;
-    Button addDiary;
+    FloatingActionButton addDiary;
     DiaryShow diaryShow;
     List<DiaryShow> diaryList1 = new ArrayList<>();
     List<DiaryShow> diaryList = new ArrayList<>();

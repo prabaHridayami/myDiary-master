@@ -13,14 +13,23 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <Button
+    <!--<Button-->
+        <!--android:id="@+id/addDiary"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginBottom="16dp"-->
+        <!--android:background="@drawable/ic_add_circle_black_24dp" />-->
+
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/addDiary"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/ic_add_circle_black_24dp" />
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_add_black_24dp"
+        android:layout_margin="16dp" />
 
 </RelativeLayout>

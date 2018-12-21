@@ -6,11 +6,16 @@
         <!--<item name="colorPrimary">@color/colorPrimary</item>-->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorPrimary">@color/bluePastel</item>
+        <item name="colorPrimary">@color/pinkdark</item>
         <item name="android:colorForeground">@color/foreground_material_light</item>
     </style>
 
-    <style name="AppNoBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppNoBar" parent="Theme.AppCompat.Light.NoActionBar"
+        height="50dp">
+        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppNoBar1" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
     </style>
 

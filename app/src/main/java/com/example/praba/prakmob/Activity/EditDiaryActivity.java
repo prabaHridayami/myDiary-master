@@ -11,15 +11,19 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.praba.prakmob.R;
@@ -45,9 +49,10 @@ public class EditDiaryActivity extends AppCompatActivity {
     ApiService service;
     EditText etTitle, etDiary;
     ImageView iv_pic;
-    Button btn_edit, btn_gallery1, btn_back1;
+    Button btn_edit, btn_gallery1, btn_back1, btn_delete;
     String inputTitle, inputDiary, id_diary;
     private Bitmap bitmap;
+    private Context mContext;
     MultipartBody.Part body;
 
     @Override
@@ -56,14 +61,19 @@ public class EditDiaryActivity extends AppCompatActivity {
         service = ApiClient.getService();
         setContentView(R.layout.activity_edit_diary);
 
+
+
         etTitle = findViewById(R.id.ed_title1);
         etDiary = findViewById(R.id.ed_text1);
         btn_gallery1 = findViewById(R.id.btn_gallery1);
+        btn_delete = findViewById(R.id.btn_delete);
         btn_edit = findViewById(R.id.btn_edit);
         btn_back1 = findViewById(R.id.btn_back1);
         iv_pic = findViewById(R.id.iv_pic);
         sharedPreferences = this.getSharedPreferences("user", Context.MODE_PRIVATE);
         final String id = sharedPreferences.getString("id","");
+        Intent intent = getIntent();
+        final String idDiary = intent.getStringExtra("id_diary");
 
         getDiaryData();
         btn_back1.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +99,10 @@ public class EditDiaryActivity extends AppCompatActivity {
                         Diary diary = response.body();
                         if (response.isSuccessful()){
                             Toast.makeText(EditDiaryActivity.this, "Edit Diary Success", Toast.LENGTH_LONG).show();
+
+                            Intent intent=new Intent(EditDiaryActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         }else{
                             Toast.makeText(EditDiaryActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                         }
@@ -114,6 +128,31 @@ public class EditDiaryActivity extends AppCompatActivity {
                     selectImage();
                 }
 
+            }
+        });
+
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                service.delete(idDiary).enqueue(new Callback<Diary>() {
+                    @Override
+                    public void onResponse(Call<Diary> call, retrofit2.Response<Diary> response) {
+                        if (response.isSuccessful()){
+                            Intent intent=new Intent(EditDiaryActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                            Toast.makeText(EditDiaryActivity.this, "Delete Diary Success", Toast.LENGTH_LONG).show();
+
+                        }else{
+                            Toast.makeText(EditDiaryActivity.this, "Delete Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Diary> call, Throwable t) {
+                        Toast.makeText(EditDiaryActivity.this, "Error :"+t, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
@@ -180,7 +219,9 @@ public class EditDiaryActivity extends AppCompatActivity {
             Uri selectedImage=data.getData();
             try {
                 bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),selectedImage);
+                iv_pic = findViewById(R.id.iv_pic);
                 iv_pic.setImageBitmap(bitmap);
+                Toast.makeText(EditDiaryActivity.this, "Gambar dirubah", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }

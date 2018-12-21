@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_local_post_office_black_24dp);
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_person_black_24dp);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_person_black_24dp2);
 
         ActionBar actionBar =getSupportActionBar();
         actionBar.setElevation(0);

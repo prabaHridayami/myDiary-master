@@ -82,6 +82,9 @@ public class WritediaryActivity extends AppCompatActivity {
                     public void onResponse(Call<Diary> call, retrofit2.Response<Diary> response) {
                         Diary diary = response.body();
                         if (response.isSuccessful()){
+                            Intent intent=new Intent(WritediaryActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            finish();
                             Toast.makeText(WritediaryActivity.this, "Add Diary Success", Toast.LENGTH_LONG).show();
                         }else{
                             Toast.makeText(WritediaryActivity.this, "Failed", Toast.LENGTH_SHORT).show();

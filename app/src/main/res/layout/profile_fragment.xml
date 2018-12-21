@@ -2,10 +2,12 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:paddingLeft="32dp"
     android:paddingRight="32dp">
 
@@ -14,7 +16,7 @@
         android:id="@+id/profile_image"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/amplop"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:clickable="true"/>
@@ -24,10 +26,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profile_image"
-        android:text="Change photo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:clickable="true"/>
+        android:layout_marginTop="18dp"
+        android:clickable="true"
+        android:text="Change photo"
+        android:textColor="@color/pink"/>
 
     <LinearLayout
         android:layout_marginTop="16dp"
@@ -42,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/name"
+            android:textColor="@color/pink"
             />
 
         <EditText
@@ -49,7 +53,10 @@
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/name"
+            android:padding="3dp"
+            android:background="@drawable/edit_field"
+            android:hint="..."
+            android:textColorHint="@color/pink"
             android:textSize="14sp"
             />
 
@@ -59,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/username"
+            android:textColor="@color/pink"
             />
 
         <EditText
@@ -66,7 +74,10 @@
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username"
+            android:background="@drawable/edit_field"
+            android:padding="3dp"
+            android:textColorHint="@color/pink"
+            android:hint="..."
             android:textSize="14sp"
 
             />
@@ -77,13 +88,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/email"
+            android:textColor="@color/pink"
             />
 
         <EditText
             android:id="@+id/emailAcc"
             android:layout_marginTop="8dp"
+            android:padding="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edit_field"
             android:textSize="14sp"
             android:inputType="textEmailAddress"
             android:enabled="false"
@@ -91,7 +105,7 @@
 
         <Button
             android:id="@+id/btn_edit"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/signup_shape"
